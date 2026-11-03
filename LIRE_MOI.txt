@@ -11,7 +11,7 @@ DÉMARRAGE
 NOUVEAUTÉS
 • Un château par joueur en PvP, y compris quatre châteaux en 2 contre 2.
 • Six défenses et six troupes différentes équipées au maximum.
-• Les 87 types d’ennemis du PvE sont collectionnables ; une troupe bonus dans
+• 160 troupes : 87 types PvE et 73 spécialistes, autant que les défenses ; une troupe bonus dans
   chaque pack, six troupes de départ offertes.
 • Les troupes combattent entre elles et infligent des dégâts en atteignant
   le château. Elles ne ciblent, ne détruisent ni ne neutralisent les tourelles.
@@ -59,7 +59,7 @@ collections restent locales et ne constituent pas un classement compétitif séc
 VÉRIFICATIONS
 Moteur : 16 cartes, placement et routes, énergie individuelle en coopération,
 quatre châteaux, combat entre armées, absence de ciblage des tourelles par les
-troupes, 87 modèles déployables, sérialisation et autorité du serveur.
+troupes, 160 modèles déployables, sérialisation et autorité du serveur.
 Comptes : sessions mémorisées, reprise, amis, invitations, quatre clients,
 persistance après redémarrage, contrôles d’accès et absence de mot de passe en clair.
 Interface : essais sur ordinateur et en formats mobiles portrait/paysage,
@@ -67,3 +67,24 @@ réglages, neige, déploiement et ouverture de packs.
 Le rendu 3D compatible a été contrôlé visuellement. L’environnement de contrôle
 ne disposait pas de WebGL : le rendu GPU n’a pas été vérifié visuellement.
 Aucune mesure de performance n’a été faite sur un téléphone physique.
+
+CONQUÊTE : 3 ou 5 avant-postes capturables, plusieurs routes par château.
+Déploiement sans recharge/plafond, énergie personnelle requise.
+Fluidité adaptative visant 60 FPS ; résultat dépendant du matériel.
+Invitations répétées corrigées : nouveaux salons, anciennes invitations nettoyées.
+
+DERNIERS AJOUTS
+• Coop adaptée à 1–4 joueurs, difficulté choisie conservée, ajustement annoncé au salon.
+• Recherche PvP par joueur/type : 3 améliorations pour la partie, troupes actuelles et futures.
+• Défenses améliorées individuellement : disparition du modèle corrigée, badges I–III.
+• Onglets contrastés, transitions brèves, filtres tactiles et contrôle clavier.
+
+HUD MOBILE ET RENDU
+• Portrait/paysage : avatar et ressources sur une ligne, six cartes dans un petit bandeau.
+• Outils, en haut à droite : capacités, zoom, réglages et Territoires ; en PvP, Cible et Via.
+  Le volet reste non bloquant : la partie continue.
+• Minicarte masquée au départ : Outils → Carte pour l’afficher, Fermer la carte pour revenir.
+  Le radar est replié sur une ligne ; + affiche les fronts.
+• La fiche de pose montre le nom et le coût ; ⓘ développe les statistiques, × annule.
+• Profil graphique mobile automatique, sans flou de profondeur ni halo lumineux.
+  Résolution, ombres et effets s’adaptent à la charge ; 60 FPS ne sont pas garantis.

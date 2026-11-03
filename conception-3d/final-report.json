@@ -29,7 +29,116 @@
     ],
     "hudDesktopHeightPx": 100,
     "hudLandscapeHeightPx": 74,
-    "renderBuffers": "Reused independently per canvas; pixel/depth clearing, occlusion and resize verified."
+    "renderBuffers": "Reused independently per canvas; pixel/depth clearing, occlusion and resize verified.",
+    "captureFortGeometry": {
+      "counts": [
+        3,
+        5
+      ],
+      "maximumTriangles": 3080,
+      "trianglesPerFort": 616,
+      "sharedPrimitiveGeometry": true,
+      "openEntranceRayCheck": true,
+      "groundDrapedCaptureRing": true,
+      "finiteVerticesAndTransforms": true,
+      "ownershipMaterialUpdate": true,
+      "geometryAndMaterialDisposal": true,
+      "test": "verify_outpost_models.cjs",
+      "browserReview": "Integrated production-camera software-renderer review: three routes and forts visible; capture controls and team flags checked. GPU visual review unavailable."
+    },
+    "conquestRegression": {
+      "maps": 16,
+      "validDeploymentRoutes": 416,
+      "troops": 160,
+      "defenses": 160,
+      "rapidDeployments": 55,
+      "remoteAnnex": true,
+      "amphibiousMovementWithTowers": true,
+      "captureContestRecapture": true
+    },
+    "coopScaling": {
+      "cases": 768,
+      "players": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "difficulties": 4,
+      "serverRosterCompactionAndReconnect": true
+    },
+    "troopResearch": {
+      "types": 160,
+      "additionalLevels": 3,
+      "activeAndFutureUnits": true,
+      "personalEnergyAndTypeIsolation": true,
+      "networkAuthorityAndReplication": true
+    },
+    "towerUpgradeFix": {
+      "oldFailureReproduced": true,
+      "families": 36,
+      "upgrades": 72,
+      "idleStateFinite": true,
+      "browserLevelBadgeAndGeometryChecked": true
+    },
+    "currentUIReview": [
+      "Desktop navigation and filters",
+      "390x844 portrait troop research and six-card HUD",
+      "844x390 landscape troop research with sticky purchase action",
+      "Tower upgrade panel and level-II world badge"
+    ],
+    "performanceTarget": "Adaptive render quality targeting 60 FPS; bounded visual effects and spatial targeting. Not a guarantee; GPU and physical-device FPS unmeasured.",
+    "hudMobileRevision": {
+      "date": "2026-11-03",
+      "viewportsReviewed": [
+        "390x844 portrait",
+        "844x390 landscape",
+        "1363x936 desktop"
+      ],
+      "portraitBeforePx": {
+        "top": 95,
+        "bottom": 133,
+        "radar": 70
+      },
+      "portraitAfterPx": {
+        "top": 47,
+        "bottom": 76,
+        "radar": 44
+      },
+      "landscapeAfterPx": {
+        "top": 47,
+        "pveBottom": 64,
+        "pvpBottom": 70,
+        "radar": 44
+      },
+      "onDemand": [
+        "tools",
+        "minimap",
+        "placement statistics",
+        "PvP target and route"
+      ],
+      "functionalChecks": [
+        "six defense and troop cards",
+        "minimap open and close",
+        "placement detail expansion",
+        "launch wave",
+        "speed control",
+        "PvP route selection",
+        "troop research purchase",
+        "portrait/landscape rotation",
+        "desktop controls untouched"
+      ],
+      "graphics": [
+        "automatic touch/small-viewport profile",
+        "DPR capped at 1.25 with adaptive scale",
+        "no bloom or depth-of-field on mobile",
+        "512px shadow maps, off on slower tiers",
+        "unit animations retained",
+        "hidden minimap skips drawing"
+      ],
+      "test": "verify_mobile_graphics.cjs",
+      "limitations": "Browser review used the software 3D renderer. Native WebGL flags covered by executable/source checks; physical-phone GPU FPS unmeasured."
+    }
   },
   "postmortem": {
     "observations": [
@@ -43,11 +152,25 @@
       "Single sRGB conversion; geometry cache added",
       "Removed all approach slabs; existing roads retained",
       "Matte stone with bounded shader radiance; no bright halo",
-      "Purchase required for the whole tower footprint; clear price and ownership UI"
+      "Purchase required for the whole tower footprint; clear price and ownership UI",
+      "Added compact matte field forts with actual courtyard entrance gaps and team-colored flags.",
+      "Capture rings conform to terrain and remain separate from physical footprint.",
+      "GPU and software views consume the same geometry; five forts add 3080 triangles.",
+      "Preserved finite idle animation phase when upgrading tower rigs; missing state caused a NaN rotation and an invisible turret."
     ],
     "remainingRisks": [
       "No physical device FPS benchmark",
       "No paid external generated meshes or formal room-gate approval"
     ]
+  },
+  "formalGateValidator": {
+    "command": "validate_room.py conception-3d --gate runtime",
+    "passed": false,
+    "errors": [
+      "Missing plan-metadata.json",
+      "Missing props.json",
+      "Missing room-layout.json"
+    ],
+    "scopeLimitation": "The export validator expects a Meshy/Blender room evidence package. This change is runtime-native procedural gameplay code with no paid generation, no mesh export and no deployment. Formal room gates remain pending and are not claimed passed."
   }
 }

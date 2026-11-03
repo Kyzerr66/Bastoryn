@@ -11,9 +11,13 @@ module.exports=function accounts({json,rooms,publicRoom}){
  function cookie(req){const raw=(req.headers.cookie||'').split(';').map(s=>s.trim()).find(s=>s.startsWith('owned_session='))?.slice(14);if(!raw||raw.length>128)return null;const ses=db.sessions.find(s=>s.hash===hash(raw)&&s.expires>Date.now());return ses?user(ses.user):null;}
  function requireUser(req){const u=cookie(req);if(!u){const e=Error('Connecte-toi à ton compte pour jouer avec tes amis.');e.status=401;throw e;}return u;}
  const safe=u=>({id:u.id,username:u.username,name:u.name});
- function activeRoom(id){for(const r of rooms.values())if(r.players.some(p=>p?.accountId===id))return r;return null;}
+ function ended(r){return !!(r?.ended||r?.state?.ended||r?.game?.Frontier?.session?.ended);}
+ function activeRoom(id){return [...rooms.values()].reverse().find(r=>!ended(r)&&r.players.some(p=>p?.accountId===id))||null;}
+ function validInvite(i,recipient){const r=rooms.get(i.room),sender=user(i.from);return !!(i.expires>Date.now()&&r&&!r.started&&!ended(r)&&sender&&recipient.friends.includes(sender.id)&&r.players.some(p=>p?.accountId===sender.id)&&!r.players.some(p=>p?.accountId===recipient.id));}
+ function roomChanged(){const changed=[];for(const u of db.users){const next=u.invites.filter(i=>validInvite(i,u));if(next.length!==u.invites.length){u.invites=next;changed.push(u.id);}}if(changed.length){save();notify(changed);}return changed;}
+
  function online(id){return !!presence.get(id)?.size;}
- function view(u){const r=activeRoom(u.id);return {user:safe(u),friends:u.friends.map(id=>user(id)).filter(Boolean).map(f=>({...safe(f),online:online(f.id),status:activeRoom(f.id)?.started?'En partie':online(f.id)?'En ligne':'Hors ligne'})),requests:u.requests.map(id=>user(id)).filter(Boolean).map(safe),sent:db.users.filter(f=>f.requests.includes(u.id)).map(safe),invitations:u.invites.filter(i=>i.expires>Date.now()&&rooms.has(i.room)&&!rooms.get(i.room).started).map(i=>({...i,from:safe(user(i.from))})),activeRoom:r?{code:r.code,started:r.started,config:r.config}:null};}
+ function view(u){const r=activeRoom(u.id);return {user:safe(u),friends:u.friends.map(id=>user(id)).filter(Boolean).map(f=>({...safe(f),online:online(f.id),status:activeRoom(f.id)?.started?'En partie':online(f.id)?'En ligne':'Hors ligne'})),requests:u.requests.map(id=>user(id)).filter(Boolean).map(safe),sent:db.users.filter(f=>f.requests.includes(u.id)).map(safe),invitations:u.invites.filter(i=>validInvite(i,u)).map(i=>({...i,from:safe(user(i.from))})),activeRoom:r?{code:r.code,started:r.started,config:r.config}:null};}
  function emit(u){for(const stream of presence.get(u.id)||[]){try{if(stream.writableLength>1e6)stream.end();else stream.write('data: '+JSON.stringify({type:'social',data:view(u)})+'\n\n');}catch{}}}
  function notify(ids){for(const id of new Set(ids)){const u=user(id);if(u)emit(u);}}
  function onlineChanged(u){notify([u.id,...u.friends]);}
@@ -49,10 +53,10 @@ module.exports=function accounts({json,rooms,publicRoom}){
    if(!target||!account.friends.includes(target.id))throw Error('Ami introuvable.');account.friends=account.friends.filter(id=>id!==target.id);target.friends=target.friends.filter(id=>id!==account.id);account.invites=account.invites.filter(i=>i.from!==target.id);target.invites=target.invites.filter(i=>i.from!==account.id);save();notify([account.id,target.id]);json(res,200,view(account));return true;
   }
   if(p==='/api/social/invite'){
-   if(!target||!account.friends.includes(target.id))throw Error('Ajoute ce joueur et attends qu’il accepte ta demande.');const r=activeRoom(account.id);if(!r||r.started)throw Error('Crée un salon avant la partie pour inviter tes amis.');if(r.players.filter(Boolean).length>=r.capacity)throw Error('Le salon est complet.');if(r.players.some(p=>p?.accountId===target.id))throw Error('Cet ami est déjà dans le salon.');const key=account.id+':'+target.id;if((inviteLimits.get(key)||0)>Date.now()-10000)throw Error('Invitation déjà envoyée.');inviteLimits.set(key,Date.now());target.invites=target.invites.filter(i=>i.expires>Date.now()&&i.from!==account.id).slice(-19);target.invites.push({id:crypto.randomBytes(12).toString('hex'),from:account.id,room:r.code,mode:r.config.mode,map:r.config.map,expires:Date.now()+600000});save();emit(target);json(res,200,{ok:true});return true;
+   if(!target||!account.friends.includes(target.id))throw Error('Ajoute ce joueur et attends qu’il accepte ta demande.');const r=activeRoom(account.id);if(!r||r.started)throw Error('Crée un salon avant la partie pour inviter tes amis.');if(r.players.filter(Boolean).length>=r.capacity)throw Error('Le salon est complet.');if(r.players.some(p=>p?.accountId===target.id))throw Error('Cet ami est déjà dans le salon.');const key=account.id+':'+target.id+':'+r.code;if((inviteLimits.get(key)||0)>Date.now()-10000)throw Error('Invitation déjà envoyée.');inviteLimits.set(key,Date.now());target.invites=target.invites.filter(i=>validInvite(i,target)&&i.from!==account.id).slice(-19);target.invites.push({id:crypto.randomBytes(12).toString('hex'),from:account.id,room:r.code,mode:r.config.mode,map:r.config.map,expires:Date.now()+600000});save();emit(target);json(res,200,{ok:true});return true;
   }
   if(p==='/api/social/dismiss'){account.invites=account.invites.filter(i=>i.id!==data.invitation);save();emit(account);json(res,200,view(account));return true;}
   return false;
  }
- return {route,requireUser,cookie,view,safe,activeRoom,notify,user};
+ return {route,requireUser,cookie,view,safe,activeRoom,roomChanged,ended,notify,user};
 };

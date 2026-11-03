@@ -14,7 +14,7 @@
 8. Crée un salon et choisis le mode et la carte. Dans **Inviter des amis**, clique **Inviter** à côté d’un ami. Il reçoit une invitation directement dans le jeu et clique **Rejoindre**. Vous pouvez aussi partager le code à six caractères.
 9. Chaque joueur clique **Je suis prêt**, puis l’hôte lance la partie.
 
-Les invitations concernent les salons qui n’ont pas encore commencé. Elles expirent après dix minutes. Pour rejoindre un autre salon, termine ou quitte d’abord ta partie actuelle.
+Les invitations concernent les salons qui n’ont pas encore commencé. Elles expirent après dix minutes. Si tu joues déjà, utilise « Quitter et rejoindre » pour accepter explicitement une invitation vers un autre salon.
 
 | Mode | Joueurs humains | Châteaux | Organisation |
 |---|---:|---:|---|
@@ -25,24 +25,51 @@ Les invitations concernent les salons qui n’ont pas encore commencé. Elles ex
 
 Pour jouer avec des IA identifiées ou en coopération seul, utilise **Escarmouche → Jouer avec les IA**.
 
+## Difficulté adaptée en coopération
+
+La difficulté choisie (Normal, Difficile, Cauchemar ou Apocalypse) reste la base. Le jeu ajoute cet ajustement selon le nombre de joueurs présents au lancement, humains et IA compris :
+
+| Joueurs | Effectifs ennemis | PV et boucliers ordinaires | PV et boucliers des boss |
+|---:|---:|---:|---:|
+| 1 | ×1 | ×1 | ×1 |
+| 2 | ×1,5 | ×1,2 | ×1,8 |
+| 3 | ×2 | ×1,4 | ×2,6 |
+| 4 | ×2,5 | ×1,6 | ×3,4 |
+
+Le nombre de boss reste identique. Les arrivées sont légèrement étalées pour garder les vagues lisibles. Ces paramètres sont affichés dans la préparation et le salon. Une déconnexion temporaire ou un changement d’onglet ne les modifie pas. L’énergie reste individuelle.
+
 ## Le siège PvP, étape par étape
 
 1. Équipe **jusqu’à six défenses et six troupes différentes**. Les deux sélections sont indépendantes. Un exemplaire suffit pour utiliser une troupe plusieurs fois ; sa carte n’est pas consommée.
 2. Chaque joueur commence avec **100 PV de château**, **300 énergie personnelle** et trois zones disponibles près de sa base. Tu disposes de vingt secondes pour préparer les défenses.
 3. Choisis une défense dans le HUD puis un sol autorisé. Les voies de passage, l’eau, les bâtiments, les autres tourelles et les abords des châteaux restent interdits. Les autres zones s’achètent via **Territoires**.
-4. Passe à l’onglet **Troupes** du HUD et sélectionne un château adverse dans **Cible**.
-5. Pour une troupe **Route**, touche sa carte : elle part de ton château et suit les routes jusqu’à sa cible.
+4. Passe à l’onglet **Troupes** du HUD et sélectionne un château adverse dans **Cible**. Sur téléphone, les champs **Cible** et **Via** se trouvent dans **Outils**, en haut à droite.
+5. Pour une troupe **Route**, touche sa carte : choisis d’abord « Via » pour la faire passer par un avant-poste, puis elle part de ton château jusqu’à la cible.
 6. Pour une troupe **Hors-piste**, **Aérienne** ou **Amphibie**, touche sa carte puis place son départ entre **2,4 et 12 mètres de ton château**. Les aériennes volent en ligne droite. Les véhicules calculent un trajet praticable court à travers le terrain et les ponts, en évitant les bâtiments et l’eau. Les amphibies peuvent également traverser l’eau. Si aucun trajet n’existe, choisis un autre départ : aucune énergie n’est dépensée.
 7. Les troupes tirent sur les troupes adverses à portée. Certaines touchent aussi les aériennes. Les alliées ne se blessent pas. **Les troupes ne ciblent, ne détruisent et ne neutralisent jamais les tourelles en PvP. Les tourelles peuvent tirer sur les troupes.**
 8. Une troupe qui atteint le château adverse inflige ses dégâts au château puis disparaît. Le coût, les PV, les dégâts par tir, l’intervalle de tir, la portée et les dégâts au château sont indiqués dans la collection.
 
-Chaque carte a **2,5 secondes de recharge** après un envoi. Tu peux avoir **40 troupes actives** au maximum. Le revenu de base est de **8 énergie par seconde**, auquel s’ajoutent **1,5 par zone achetée** et le revenu de tes forges. L’influence augmente de 1 toutes les vingt secondes. Tu gagnes aussi de l’énergie en éliminant des troupes.
+Les déploiements n’ont **ni recharge ni plafond de troupes** : seule ton énergie limite les envois. Le revenu de base est de **8 énergie/seconde**, plus **1,5 par zone achetée** et les forges. Toutes les zones peuvent être achetées directement en PvP, sans influence ni zone voisine, pour 120 à 200 énergie.
+
+**3 bases en duel, 5 à quatre joueurs.** Les troupes terrestres s’arrêtent dans leur cercle pour capturer. L’infanterie et les éclaireurs capturent plus vite ; la puissance cumulée est plafonnée pour éviter une prise instantanée. La présence adverse conteste la capture. Pour reprendre une base, neutralise-la puis capture-la. Une base non contestée rapporte **2 énergie/s à partager entre les joueurs de son alliance**. Les aéronefs ne capturent pas. Les petites forteresses ont des drapeaux et des indicateurs de progression.
+
+**Rôles et contre-jeu.** Infanterie pour capturer, éclaireurs rapides mais fragiles, blindés résistants, artillerie contre groupes et blindages, anti-air contre aéronefs, médecins au soin limité, Cryo pour ralentir et briser les boucliers, porte-boucliers en première ligne. La rareté ne donne aucun multiplicateur de puissance en PvP. Les coûts payent les capacités et la mobilité.
 
 La dernière alliance avec un château debout gagne. Une partie dure au maximum quinze minutes : les PV cumulés des châteaux encore debout départagent alors les alliances. Une égalité reste possible. Les niveaux des défenses sont égalisés en PvP ; les statistiques des troupes sont adaptées au siège, distinctes de celles des ennemis de campagne. Les effets de création automatique d’unités et les attaques spéciales contre les défenses ne s’appliquent pas en PvP.
 
+## Améliorer pendant une partie
+
+**Défenses :** clique une tourelle posée puis **Améliorer**. Seule cette tourelle progresse, jusqu’au niveau III. Son badge affiche son niveau ; le modèle reste visible après chaque amélioration.
+
+**Troupes en PvP :** dans l’onglet Troupes du HUD, touche le bouton **↑ / niveau** associé à une carte. Le panneau compare les statistiques actuelles et suivantes et affiche le coût en énergie personnelle. Le clic principal sur la carte continue à envoyer une troupe.
+
+Chaque type peut recevoir **trois améliorations**, du niveau 1 au niveau 4. Elles s’appliquent à tes unités de ce type déjà présentes et à tes futurs déploiements pour le reste de cette partie. Les autres types, les unités alliées et les défenses ne sont pas affectés. Les PV et boucliers gardent leur proportion restante : améliorer ne soigne pas gratuitement. Le prix de déploiement reste identique. Une nouvelle partie remet les recherches à zéro.
+
+Les bases capturées rapportent +2 énergie/s à leur alliance, partagées entre ses joueurs encore en jeu. Le HUD indique ta part personnelle ; une base contestée ne produit plus tant que l’affrontement dure.
+
 ## Obtenir les troupes
 
-Les **87 modèles du PvE** figurent dans la collection de troupes. Six cartes de départ sont offertes : Fantassin, Éclaireur à moto, Jeep armée, Char léger, Hélicoptère d’attaque et Médecin.
+La collection comporte **160 troupes, comme les 160 défenses** : les 87 modèles du PvE et 73 variantes spécialistes avec équipements 3D distincts. Six cartes de départ sont offertes : Fantassin, Éclaireur à moto, Jeep armée, Char léger, Hélicoptère d’attaque et Médecin.
 
 Chaque ouverture de pack ajoute **une troupe bonus**, en plus des défenses prévues par ce pack. Toutes les troupes peuvent être obtenues, avec des raretés et des probabilités différentes. Les cartes restent cachées jusqu’à l’ouverture du sceau puis leur révélation. Les doublons de troupes sont conservés comme exemplaires supplémentaires ; ils n’augmentent pas les statistiques de siège.
 
@@ -75,7 +102,11 @@ Pour conserver les comptes après un redéploiement, utilise un **disque persist
 ## Confort et commandes
 
 - **⚙ Réglages** : taille du HUD de 80 à 120 %, volume des effets et du jeu, volume de la musique, coupure générale. Ces réglages sont mémorisés sur cet appareil. Le HUD limite son agrandissement si nécessaire pour tenir dans l’écran.
-- **Téléphone** : portrait et paysage sont pris en charge ; glisse pour déplacer la caméra, pince pour zoomer. La minicarte et le bouton Château permettent de se recentrer.
+- **Téléphone** : portrait et paysage sont pris en charge ; glisse pour déplacer la caméra, pince pour zoomer. Le haut tient sur une ligne avec ton avatar ; les six cartes restent accessibles dans le petit bandeau du bas. Touche l’avatar pour retrouver ton profil et tes amis.
+- **Outils** (en haut à droite) : ouvre le volet des capacités, du zoom, des réglages et des **Territoires**. En PvP, il contient aussi **Cible** et **Via**. La partie continue pendant que ce volet est ouvert.
+- **Carte à la demande** : dans Outils, touche **Carte** pour afficher la minicarte, puis **Fermer la carte** pour libérer le terrain. **Château** recentre la vue. Le radar démarre sur une seule ligne ; son **+** affiche les détails des fronts.
+- **Pose d’une défense** : la fiche résumée affiche son nom et son coût. Touche **ⓘ** pour voir ses statistiques, ou **×** pour annuler la pose. Les noms des territoires et des vigies sont masqués sur le petit écran ; les zones restent accessibles par **Outils → Territoires**.
+- **Rendu mobile** : le profil graphique se choisit automatiquement, sans effet de flou de profondeur ni halo lumineux. Il ajuste la résolution, les ombres et les effets selon la charge pour garder le terrain lisible. La fluidité dépend du téléphone et de la taille des combats ; 60 FPS ne sont pas garantis.
 - **PC** : clique pour poser, glisse pour déplacer la caméra, utilise la molette pour zoomer. Les touches 1–6 sélectionnent les cartes de l’onglet actif ; Échap annule une pose.
 - **PvE** : les trajets de préparation disparaissent au lancement de la vague. Les marqueurs d’entrée restent visibles pour indiquer d’où viennent les ennemis.
 - **Neige** : routes brunes, unités plus sombres et luminosité réduite pour distinguer les éléments.
@@ -89,6 +120,13 @@ Pour conserver les comptes après un redéploiement, utilise un **disque persist
 | Le téléphone ne charge pas le jeu | Réseau Wi-Fi invité isolé, pare-feu du PC ou mauvaise adresse réseau |
 | Impossible de lancer | Toutes les places nécessaires sont remplies, connectées et marquées prêtes |
 | Le bouton Inviter est grisé | Crée un salon qui n’a pas encore démarré |
-| Déploiement refusé | Énergie, recharge, limite de troupes, cible ennemie et point de départ autorisé |
+| Déploiement refusé | Énergie personnelle, cible ennemie, route et point de départ autorisé |
 | Les comptes disparaissent après un redéploiement | Le dossier `DATA_DIR` doit être sur un stockage persistant |
 | Une troupe ne tire pas sur une tourelle | C’est la règle du PvP : seules les troupes adverses sont ciblées |
+
+
+## Fluidité et invitations répétées
+
+Le rendu adapte automatiquement la résolution, les ombres et les effets pour viser 60 FPS. La simulation conserve toutes les troupes et tous les dégâts ; les recherches de cibles et les trajets utilisent des caches et des voisinages spatiaux. Les mises à jour réseau sont regroupées et interpolées. Ce réglage ne garantit pas 60 FPS sur tous les appareils, notamment dans le mode de rendu logiciel.
+
+Les nouvelles invitations pointent vers le nouveau salon. Les invitations expirées ou liées à une partie lancée/terminée sont retirées. Si tu joues déjà, « Quitter et rejoindre » permet de changer explicitement de salon. La liste d’amis permet la recherche et le filtre En ligne.
