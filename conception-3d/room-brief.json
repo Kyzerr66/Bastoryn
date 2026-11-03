@@ -1,0 +1,51 @@
+{
+  "schema": "game-room.room-brief.v1",
+  "roomId": "owned-citadel-runtime",
+  "family": "custom",
+  "purpose": "Upgrade an existing outdoor strategy game, six-slot deck and procedural geometry. No paid generation, Blender export or publishing.",
+  "runtimeSurface": "Standalone Three.js HTML and Node private multiplayer",
+  "boundsMeters": [
+    69.6,
+    4,
+    69.6
+  ],
+  "hero": {
+    "id": "citadel",
+    "role": "defended objective",
+    "reservedBoundsMeters": [
+      3.52,
+      2.6,
+      3.52
+    ]
+  },
+  "symmetry": {
+    "mode": "radial",
+    "order": 4,
+    "appliesTo": [
+      "keep"
+    ],
+    "exceptions": [
+      "Entrance gaps follow actual procedurally generated road approaches."
+    ]
+  },
+  "circulation": {
+    "description": "Every route joins a traversable courtyard through a real open gate",
+    "minimumClearanceMeters": 1.34
+  },
+  "productionCamera": {
+    "viewport": [
+      1363,
+      936
+    ],
+    "verticalFovDegrees": 38
+  },
+  "performanceBudget": {
+    "maxCitadelTriangles": 15000,
+    "maxGeneratedTextureBytes": 0
+  },
+  "creditBudget": {
+    "maximumCredits": 0,
+    "approvalRequired": true
+  },
+  "scope": "Runtime-native procedural code only. Room-export approval gates remain pending and are not claimed as passed."
+}

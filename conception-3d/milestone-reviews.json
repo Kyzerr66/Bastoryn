@@ -1,0 +1,19 @@
+{
+  "schema": "game-room.milestone-reviews.v1",
+  "roomId": "owned-citadel-runtime",
+  "function": {
+    "status": "pending",
+    "approvedBy": "",
+    "notes": "User requested runtime code edits; no paid asset submission, mesh export or public deployment performed."
+  },
+  "form": {
+    "status": "pending",
+    "approvedBy": "",
+    "notes": "User requested runtime code edits; no paid asset submission, mesh export or public deployment performed."
+  },
+  "runtime": {
+    "status": "pending",
+    "approvedBy": "",
+    "notes": "User requested runtime code edits; no paid asset submission, mesh export or public deployment performed."
+  }
+}

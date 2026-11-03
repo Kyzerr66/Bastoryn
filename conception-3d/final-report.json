@@ -1,0 +1,53 @@
+{
+  "schema": "game-room.room-final-report.v1",
+  "roomId": "owned-citadel-runtime",
+  "gates": {
+    "function": false,
+    "form": false,
+    "runtime": false
+  },
+  "runtimeValidation": {
+    "maps": 16,
+    "roadAprons": 0,
+    "gates": 52,
+    "maximumCitadelTriangles": 1708,
+    "physicalApproachIntersections": 0,
+    "browser": "software-rendered production camera checked; native WebGL unavailable in test browser",
+    "territorialOwnership": "Three nearest sectors initially free; buying unlocks construction and income; ownership synchronized per team.",
+    "mapSidesMeters": [
+      75,
+      78,
+      82.5,
+      87
+    ],
+    "hudViewports": [
+      "1280x720",
+      "390x844",
+      "844x390",
+      "320x568",
+      "568x320"
+    ],
+    "hudDesktopHeightPx": 100,
+    "hudLandscapeHeightPx": 74,
+    "renderBuffers": "Reused independently per canvas; pixel/depth clearing, occlusion and resize verified."
+  },
+  "postmortem": {
+    "observations": [
+      "Adjacent gates initially overlapped",
+      "Factory color converted sRGB twice",
+      "User found approach slabs unclear and castle overexposed",
+      "Territory boundaries were decorative for placement"
+    ],
+    "corrections": [
+      "Excluded gateposts/walls from neighboring approach corridors",
+      "Single sRGB conversion; geometry cache added",
+      "Removed all approach slabs; existing roads retained",
+      "Matte stone with bounded shader radiance; no bright halo",
+      "Purchase required for the whole tower footprint; clear price and ownership UI"
+    ],
+    "remainingRisks": [
+      "No physical device FPS benchmark",
+      "No paid external generated meshes or formal room-gate approval"
+    ]
+  }
+}
