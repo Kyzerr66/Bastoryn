@@ -37,7 +37,7 @@ CONSERVATION DES DONNÉES
 Le compte, les amis et les invitations sont enregistrés par ce serveur dans
 DATA_DIR, ou le dossier data par défaut. Préserve ce dossier lors des mises à jour.
 Il doit être sur un stockage persistant en hébergement. Ne le publie pas dans
-un dépôt. La collection, la campagne, les crédits et les réglages restent locaux
+un dépôt. La collection, la campagne solo, les crédits, les decks et les réglages restent locaux
 au navigateur. Les parties en cours ne survivent pas à un redémarrage serveur.
 
 FICHIERS NÉCESSAIRES AU MULTIJOUEUR
@@ -76,7 +76,7 @@ Invitations répétées corrigées : nouveaux salons, anciennes invitations nett
 DERNIERS AJOUTS
 • Coop adaptée à 1–4 joueurs, difficulté choisie conservée, ajustement annoncé au salon.
 • Recherche PvP par joueur/type : 3 améliorations pour la partie, troupes actuelles et futures.
-• Défenses améliorées individuellement : disparition du modèle corrigée, badges I–III.
+• Défenses améliorées individuellement : disparition du modèle corrigée, badges Niv. 1–3.
 • Onglets contrastés, transitions brèves, filtres tactiles et contrôle clavier.
 
 HUD MOBILE ET RENDU
@@ -88,3 +88,12 @@ HUD MOBILE ET RENDU
 • La fiche de pose montre le nom et le coût ; ⓘ développe les statistiques, × annule.
 • Profil graphique mobile automatique, sans flou de profondeur ni halo lumineux.
   Résolution, ombres et effets s’adaptent à la charge ; 60 FPS ne sont pas garantis.
+
+CAMPAGNE ET DECKS
+• Combat → Campagne avec des amis : 2 à 4 joueurs, citadelle partagée et énergie personnelle.
+• Victoires et étoiles coop sauvegardées sur chaque compte ; même salon pour la mission suivante.
+• Arsenal → Mes decks : jusqu’à 12 decks nommés de 6 défenses + 6 unités, sauvegardés sur cet appareil.
+• Utiliser ce deck choisit les cartes de la prochaine partie, en PvE comme en PvP.
+• Changer de deck au salon puis se déclarer prêt actualise l’équipement personnel.
+• Projectiles animés entre les mises à jour réseau ; collisions des missiles rapides corrigées.
+• Après la mise à jour, tous les joueurs doivent recharger le jeu et créer un nouveau salon.

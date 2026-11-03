@@ -17,7 +17,7 @@ module.exports=function accounts({json,rooms,publicRoom}){
  function roomChanged(){const changed=[];for(const u of db.users){const next=u.invites.filter(i=>validInvite(i,u));if(next.length!==u.invites.length){u.invites=next;changed.push(u.id);}}if(changed.length){save();notify(changed);}return changed;}
 
  function online(id){return !!presence.get(id)?.size;}
- function view(u){const r=activeRoom(u.id);return {user:safe(u),friends:u.friends.map(id=>user(id)).filter(Boolean).map(f=>({...safe(f),online:online(f.id),status:activeRoom(f.id)?.started?'En partie':online(f.id)?'En ligne':'Hors ligne'})),requests:u.requests.map(id=>user(id)).filter(Boolean).map(safe),sent:db.users.filter(f=>f.requests.includes(u.id)).map(safe),invitations:u.invites.filter(i=>validInvite(i,u)).map(i=>({...i,from:safe(user(i.from))})),activeRoom:r?{code:r.code,started:r.started,config:r.config}:null};}
+ function view(u){const r=activeRoom(u.id);return {user:safe(u),campaign:u.campaign||{},friends:u.friends.map(id=>user(id)).filter(Boolean).map(f=>({...safe(f),online:online(f.id),status:activeRoom(f.id)?.started?'En partie':online(f.id)?'En ligne':'Hors ligne'})),requests:u.requests.map(id=>user(id)).filter(Boolean).map(safe),sent:db.users.filter(f=>f.requests.includes(u.id)).map(safe),invitations:u.invites.filter(i=>validInvite(i,u)).map(i=>({...i,from:safe(user(i.from))})),activeRoom:r?{code:r.code,started:r.started,config:r.config}:null};}
  function emit(u){for(const stream of presence.get(u.id)||[]){try{if(stream.writableLength>1e6)stream.end();else stream.write('data: '+JSON.stringify({type:'social',data:view(u)})+'\n\n');}catch{}}}
  function notify(ids){for(const id of new Set(ids)){const u=user(id);if(u)emit(u);}}
  function onlineChanged(u){notify([u.id,...u.friends]);}
@@ -58,5 +58,6 @@ module.exports=function accounts({json,rooms,publicRoom}){
   if(p==='/api/social/dismiss'){account.invites=account.invites.filter(i=>i.id!==data.invitation);save();emit(account);json(res,200,view(account));return true;}
   return false;
  }
- return {route,requireUser,cookie,view,safe,activeRoom,roomChanged,ended,notify,user};
+ function recordCampaign(ids,result){for(const id of new Set(ids)){const u=user(id);if(!u)continue;u.campaign||={};const p=u.campaign[result.map]||={};p.best=Math.max(p.best||0,result.waves);if(result.win){p.win=true;p.stars=Math.max(p.stars||0,result.stars);p.d=Math.max(p.d||0,result.diff+1);}}save();notify(ids);}
+ return {route,requireUser,cookie,view,safe,activeRoom,roomChanged,ended,notify,user,recordCampaign};
 };
