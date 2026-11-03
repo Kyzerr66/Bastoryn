@@ -1,130 +1,69 @@
-OWNED — FRONTIÈRES 3D
+OWNED — FRONTIÈRES 3D · SIÈGES PvP
 
-JOUER IMMÉDIATEMENT
-Ouvre index.html dans ton navigateur. Le fichier contient le jeu, ses modèles,
-sons et polices. La campagne et les escarmouches avec IA fonctionnent sans serveur.
-La sauvegarde de campagne reste locale au navigateur et à l'adresse utilisée.
+DÉMARRAGE
+• Solo / IA : ouvre index.html dans le navigateur.
+• Entre appareils : extrais tout le ZIP, installe Node.js 20+, puis lance
+  OUVRIR_MULTIJOUER.bat (Windows) ou node server.cjs (macOS/Linux).
+• Garde la fenêtre du serveur ouverte. Tous les amis ouvrent son adresse
+  réseau affichée. Ne partage pas localhost à un autre appareil.
+• Lis TUTO_MULTIJOUEUR.md pour créer un compte, ajouter des amis et les inviter.
 
-CE QUI CHANGE
-• HUD compact : six cartes et actions regroupées, retours animés à la sélection et aux vagues.
-• Interface adaptée automatiquement au portrait et au paysage ; panneaux défilants.
-• Minicarte agrandissable, recentrage sur le château et plein écran si disponible.
-• Prévisualisations mises en cache, buffers réutilisés et densité du terrain maîtrisée.
-• Six défenses équipées au maximum ; les autres restent dans la collection.
-• Cinq défenses supplémentaires : Guetteur, Batterie boréale, Lance ionique, Garde-ciel et Briseur de siège.
-• Le Guetteur est offert une seule fois ; les quatre autres se trouvent en packs et enchères.
-• Citadelle en pierre mate, portes ouvertes sur les voies, sans les plaques d’approche.
-• Tourelles et ennemis plus détaillés ; arbres et bâtiments améliorés en rendu compatible.
-• Radar tactique : fronts réels, compte des ennemis et centrage sur chaque entrée.
-• Flèches animées, voies aériennes distinctes, repères hors champ et minicarte enrichie.
-• Interface plus contrastée, sélection des défenses et boutons animés.
-• Effets de bouclier, gel et boss ; animations réduites selon le réglage système.
-• Enchères : reprise du chrono après rechargement, offres vérifiées et crédits réservés.
-• Marché animé : prix total explicite, meneur, budget disponible et alertes de fin.
-• Véritables modèles 3D de défenses et d'attaquants repris du fichier d'origine.
-• Terrain en relief, routes en géométrie 3D, décors et eau dans la scène 3D.
-• Si WebGL n'est pas disponible, les mêmes modèles sont projetés en perspective
-  avec éclairage et tampon de profondeur par un rendu logiciel compatible.
-  Ce mode est moins performant et moins détaillé que le rendu WebGL.
-• 16 cartes agrandies : 75 à 87 mètres de côté, avec collines constructibles.
-• Pose libre dans les zones disponibles. Le socle entier doit rester hors des routes.
-  Interdiction sur l'eau, les bâtiments, les pentes fortes et autour de la citadelle.
-• Trois tailles de socles réduites de 25 % ; espace de sécurité de 0,10 m.
-• Bonus en hauteur : +25 % de portée et +10 % de dégâts.
-• Anneaux et étincelles au déploiement, à l’amélioration et aux explosions.
-• Packs scellés : aucune carte affichée avant la fin de l’ouverture animée.
-• Chemins et ponts 20 % plus larges ; cartes encore agrandies de 25 % par côté
-  dans cette version (+56,25 % de surface par rapport à la version précédente).
-• Statistiques de dégâts/s, cadence, portée, diamètre et améliorations détaillées.
-• Quatrième difficulté : Apocalypse.
-• Coopération à 1–4, duel, 2 contre 2 et chacun pour soi à quatre.
-• Carnet d'amis local, salons privés, codes et liens d'invitation.
+NOUVEAUTÉS
+• Un château par joueur en PvP, y compris quatre châteaux en 2 contre 2.
+• Six défenses et six troupes différentes équipées au maximum.
+• Les 87 types d’ennemis du PvE sont collectionnables ; une troupe bonus dans
+  chaque pack, six troupes de départ offertes.
+• Les troupes combattent entre elles et infligent des dégâts en atteignant
+  le château. Elles ne ciblent, ne détruisent ni ne neutralisent les tourelles.
+• Les tourelles attaquent les troupes adverses, jamais les troupes alliées.
+• Point de départ libre près de sa base pour les unités hors-piste, aériennes
+  et amphibies ; trajet praticable court, ou vol direct pour les aériennes.
+• Énergie personnelle pour tous les joueurs, y compris en coopération.
+• Simulation multijoueur exécutée sur le serveur : changer d’onglet ne l’arrête plus.
+• Comptes persistants, demandes d’amis, présence et invitations reçues en jeu.
+• Réglages mémorisés : taille du HUD, volume du jeu et volume de la musique.
+• Neige moins éblouissante, routes et armées contrastées.
+• Les trajets de préparation disparaissent lorsque la vague commence.
 
-COMMANDES
-Clique une carte, puis un sol libre pour construire. Tu peux aussi glisser la carte.
-Un message rouge et une croix signalent un emplacement interdit ; aucun coût
-n'est prélevé en cas de refus. Le cercle large indique la portée, pas la taille.
-Touches 1 à 6 : sélectionner une défense. Échap : annuler la sélection.
-Glisser le terrain : déplacer la caméra. Molette / pincement / + et − : zoomer.
-La minicarte permet de rejoindre un point. Le bouton Carte l’agrandit.
-Le bouton Château recentre la vue. Le bouton Plein écran apparaît si disponible.
-Sur téléphone : touche une carte puis le terrain pour poser, glisse pour déplacer
-la vue et pince pour zoomer. La rotation adapte le HUD sans arrêter la partie ;
-une pose en cours est annulée pour éviter un clic involontaire.
-En rendu compatible, les flèches courbes tournent la vue pour voir les volumes.
-Cliquer une défense posée permet de consulter ses statistiques et de l'améliorer.
-Les étiquettes de colline disparaissent après construction pour ne pas la masquer.
+CONTENU CONSERVÉ
+16 cartes de 75 à 87 m de côté ; collines constructibles ; territoires achetables ;
+pose interdite sur les routes, l’eau, les bâtiments et les pentes fortes ; socles
+séparés par 0,10 m ; six défenses équipées ; cinq familles de défenses ajoutées ;
+châteaux mats sans plaques d’approche ; HUD compact portrait/paysage ; minicarte
+agrandissable ; packs scellés et révélation progressive ; enchères corrigées ;
+quatre difficultés dont Apocalypse ; modèles 3D et effets de combat.
 
-ESCARMOUCHES
-Toutes les cartes et difficultés sont disponibles dès le départ en escarmouche.
-Le deck commun garantit les mêmes moyens de départ pour les équipes.
-La campagne conserve son deck et sa progression. Les escarmouches ne modifient
-pas ses récompenses. Les partenaires d'une même équipe partagent énergie et base.
-Chacun garde le contrôle de ses propres défenses.
-En opposition, 80 énergie permettent d'envoyer 4 fantassins et 1 blindé.
-Recharge : 18 secondes. Les vagues sont synchronisées ; l'hôte peut les anticiper.
-Une vague PvP est limitée à 180 secondes. La dernière équipe debout gagne.
-Si plusieurs équipes terminent la carte, départage par vie puis éliminations.
+CONSERVATION DES DONNÉES
+Le compte, les amis et les invitations sont enregistrés par ce serveur dans
+DATA_DIR, ou le dossier data par défaut. Préserve ce dossier lors des mises à jour.
+Il doit être sur un stockage persistant en hébergement. Ne le publie pas dans
+un dépôt. La collection, la campagne, les crédits et les réglages restent locaux
+au navigateur. Les parties en cours ne survivent pas à un redémarrage serveur.
 
-MULTIJOUEUR AVEC DE VRAIS AMIS
-Le fichier HTML seul ne peut pas relier plusieurs appareils. Le serveur fourni
-permet de jouer ensemble ; aucun abonnement ni dépendance npm n'est nécessaire.
-Prérequis : une version LTS de Node.js installée sur le PC hôte.
-
-Windows : extrais tout le ZIP et lance OUVRIR_MULTIJOUER.bat.
-macOS/Linux : lance ./ouvrir-multijoueur.sh depuis ce dossier,
-ou exécute la commande : node server.cjs
-
-1. L'hôte ouvre http://localhost:8787 dans son navigateur.
-2. Les amis sur le même réseau ouvrent l'adresse réseau affichée par le serveur.
-   Si le système le demande, autorise le serveur sur ton réseau privé.
-3. Dans « Amis & salons », choisis ton pseudo puis crée un salon avec le mode,
-   la carte et la difficulté souhaités. Les autres utilisent son code.
-4. Tous les joueurs se déclarent prêts ; l'hôte lance la partie.
-5. Garde le serveur et l'onglet de l'hôte ouverts pendant toute la partie.
-   Pour arrêter le serveur : Ctrl+C.
-
-Le lien d'invitation reprend l'adresse utilisée pour ouvrir le jeu. L'hôte doit
-ouvrir l'adresse réseau affichée s'il veut copier un lien utilisable par ses amis :
-un lien localhost ne mène qu'à l'appareil de la personne qui l'ouvre.
-
-Le coop accepte 2 à 4 humains en salon ; le solo coop est disponible en escarmouche.
-Le duel exige 2 joueurs ; le 2 contre 2 et chacun pour soi exigent 4 joueurs.
-En 2 contre 2, les places 1–2 affrontent les places 3–4.
-Le carnet d'amis est enregistré sur cet appareil ; ce n'est pas un service de
-comptes ou de présence en ligne. Transmets toi-même le code ou le lien du salon.
-Les salons et parties sont temporaires. Si l'hôte part, le salon est fermé.
-Le serveur relaie les actions ; l'hôte simule la partie. Il est conçu pour des
-parties privées entre personnes de confiance, sans classement compétitif.
-
-POUR JOUER À DISTANCE
-Il faut héberger ce dossier sur un service capable d'exécuter un serveur Node.js
-persistant avec connexions SSE. La commande de démarrage est npm start.
-Le port peut être défini par la variable PORT. Une adresse HTTPS publique permet
-alors à tous d'ouvrir le même jeu et de rejoindre le même salon.
-Un hébergement statique seul (par exemple un dépôt de fichiers HTML) sert la
-campagne et les IA, mais ne lance pas le serveur multijoueur.
-Aucun hébergement public n'est créé par cette livraison.
-
-FICHIERS
-index.html / dist/index.html : même jeu autonome ; dist est utilisé par le serveur.
-server.cjs : serveur privé Node.js sans dépendance.
-package.json : commande npm start.
+FICHIERS NÉCESSAIRES AU MULTIJOUEUR
+server.cjs : serveur Node.js sans dépendance externe.
+accounts.cjs : comptes, sessions et amis.
+simulation.js : moteur de combat commun au serveur et au jeu.
+dist/index.html : jeu servi aux navigateurs (identique à index.html).
+package.json : commande npm start. PORT et DATA_DIR sont configurables.
 OUVRIR_MULTIJOUER.bat / ouvrir-multijoueur.sh : lanceurs.
-LIRE_MOI.txt : ce guide.
-TUTO_MULTIJOUEUR.md : tutoriel détaillé Wi-Fi et à distance (Render).
+TUTO_MULTIJOUEUR.md : tutoriel détaillé.
+conception-3d/ : documents de conception conservés de la version précédente.
 
-VÉRIFICATIONS EFFECTUÉES
-Tests de placement sur les 16 cartes, refus sur chaque voie et autour de son bord,
-collisions entre défenses, bonus d'altitude, vagues et quatre difficultés.
-Tests des quatre modes, des équipes, des IA et de la synchronisation des états.
-Tests du serveur avec quatre clients, préparation, capacité et permissions d'hôte.
-Essai visuel de la 3D compatible et partie avec deux onglets connectés.
-Le rendu WebGL est conservé depuis le fichier fourni ; l'environnement de contrôle
-ne disposait pas de WebGL, donc son rendu GPU n'a pas pu être vérifié visuellement.
+À DISTANCE
+Héberge le dossier complet sur un service Node.js durable avec disque persistant
+et HTTPS. Un dépôt HTML statique ne suffit pas. Aucun serveur public n’a été créé
+avec cette livraison. Cette version vise les salons privés entre amis ; les
+collections restent locales et ne constituent pas un classement compétitif sécurisé.
 
-TERRITOIRES
-Les 3 zones proches du château sont disponibles dès le début. Utilise le bouton Territoires pour acheter les autres avec l’énergie et l’influence de la partie. Les achats sont partagés par équipe et réinitialisés à chaque nouvelle partie. Le socle entier doit tenir dans une zone disponible ; les routes restent interdites.
-
-Contrôles HUD vérifiés en 1280×720, 390×844, 844×390, 320×568 et 568×320,
-avec rotation pendant la pose et une vague. Pas de mesure FPS sur téléphone physique.
+VÉRIFICATIONS
+Moteur : 16 cartes, placement et routes, énergie individuelle en coopération,
+quatre châteaux, combat entre armées, absence de ciblage des tourelles par les
+troupes, 87 modèles déployables, sérialisation et autorité du serveur.
+Comptes : sessions mémorisées, reprise, amis, invitations, quatre clients,
+persistance après redémarrage, contrôles d’accès et absence de mot de passe en clair.
+Interface : essais sur ordinateur et en formats mobiles portrait/paysage,
+réglages, neige, déploiement et ouverture de packs.
+Le rendu 3D compatible a été contrôlé visuellement. L’environnement de contrôle
+ne disposait pas de WebGL : le rendu GPU n’a pas été vérifié visuellement.
+Aucune mesure de performance n’a été faite sur un téléphone physique.

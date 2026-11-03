@@ -1,118 +1,94 @@
 # OWNED — Jouer à plusieurs
 
-Le jeu possède quatre modes : coopération à 2–4 humains, duel à 2, 2 contre 2 à 4, et chacun pour soi à 4. Le solo et les équipes avec IA restent disponibles dans **Escarmouche**.
+## Démarrer avec des amis
 
-**Choisis ton cas :** si vous êtes sur le même Wi-Fi, suis la méthode 1. Si tes amis sont chez eux, suis la méthode 2. Dans les deux cas, tous les joueurs doivent ouvrir le jeu à la **même adresse de serveur**.
+**Utilise le nouveau ZIP multijoueur.** Le fichier HTML seul permet de jouer en solo ou contre l’IA. Déposer uniquement ce HTML sur Netlify ne lance pas le serveur nécessaire aux comptes, aux amis et aux parties entre appareils.
 
-## La réponse simple pour Netlify
+1. Extrais entièrement `OWNED_Frontieres_3D_Multijoueur.zip` sur un PC.
+2. Installe Node.js 20 ou plus récent si nécessaire. Sous Windows, double-clique sur **OUVRIR_MULTIJOUER.bat**. Sur macOS/Linux, lance `node server.cjs` dans le dossier extrait.
+3. Garde la fenêtre du serveur ouverte. Le jeu fonctionne sur le PC à `http://localhost:8787`.
+4. Pour jouer sur le même Wi-Fi, **tous les joueurs ouvrent l’adresse réseau affichée par le serveur**, par exemple `http://192.168.1.25:8787`. Utilise l’adresse réellement affichée chez toi. Un lien contenant `localhost` ne fonctionne pas pour tes amis.
+5. Dans **Combat → Amis & salons**, chaque joueur crée son compte, puis se connecte. Coche **Rester connecté sur cet appareil** pour retrouver ta session.
+6. Ajoute l’identifiant ou le code ami de ton ami. Il accepte ta demande dans le même panneau.
+7. Avant de créer le salon, prépare tes cartes : **Arsenal** pour les défenses et **Troupes · collection** pour les unités.
+8. Crée un salon et choisis le mode et la carte. Dans **Inviter des amis**, clique **Inviter** à côté d’un ami. Il reçoit une invitation directement dans le jeu et clique **Rejoindre**. Vous pouvez aussi partager le code à six caractères.
+9. Chaque joueur clique **Je suis prêt**, puis l’hôte lance la partie.
 
-- **HTML déposé sur Netlify : solo et adversaires IA.** Le multijoueur entre appareils ne fonctionne pas avec ce dépôt seul.
-- **Amis chez eux : mets le dossier complet du ZIP sur Render, en service web Node.** Puis partage son adresse publique. La méthode 2 ci-dessous explique les boutons et réglages.
-- **Amis dans la même maison : lance le fichier Windows du ZIP sur un PC.** Tout le monde ouvre l’adresse réseau affichée. Suis la méthode 1.
+Les invitations concernent les salons qui n’ont pas encore commencé. Elles expirent après dix minutes. Pour rejoindre un autre salon, termine ou quitte d’abord ta partie actuelle.
 
-Une fois le jeu ouvert à la même adresse pour tous : **Combat → Amis & salons → Créer un salon → partager le code → chaque joueur clique « Je suis prêt » → l’hôte lance la partie.**
+| Mode | Joueurs humains | Châteaux | Organisation |
+|---|---:|---:|---|
+| Coopération | 2 à 4 | 1 partagé | Chacun possède son énergie et ses tourelles ; les zones sont partagées |
+| 1 contre 1 | 2 | 2 | Un château par joueur |
+| 2 contre 2 | 4 | 4 | Places 1–2 contre places 3–4, chacun garde son château |
+| Chacun pour soi | 4 | 4 | Tous adversaires |
 
-Il n’y a encore aucun serveur public créé pour ce jeu. Un code de salon seul ne relie pas des joueurs qui ont ouvert des copies indépendantes du HTML.
+Pour jouer avec des IA identifiées ou en coopération seul, utilise **Escarmouche → Jouer avec les IA**.
 
-## 1. Sur le même Wi-Fi — le plus rapide
+## Le siège PvP, étape par étape
 
-### Préparer le PC hôte (Windows)
+1. Équipe **jusqu’à six défenses et six troupes différentes**. Les deux sélections sont indépendantes. Un exemplaire suffit pour utiliser une troupe plusieurs fois ; sa carte n’est pas consommée.
+2. Chaque joueur commence avec **100 PV de château**, **300 énergie personnelle** et trois zones disponibles près de sa base. Tu disposes de vingt secondes pour préparer les défenses.
+3. Choisis une défense dans le HUD puis un sol autorisé. Les voies de passage, l’eau, les bâtiments, les autres tourelles et les abords des châteaux restent interdits. Les autres zones s’achètent via **Territoires**.
+4. Passe à l’onglet **Troupes** du HUD et sélectionne un château adverse dans **Cible**.
+5. Pour une troupe **Route**, touche sa carte : elle part de ton château et suit les routes jusqu’à sa cible.
+6. Pour une troupe **Hors-piste**, **Aérienne** ou **Amphibie**, touche sa carte puis place son départ entre **2,4 et 12 mètres de ton château**. Les aériennes volent en ligne droite. Les véhicules calculent un trajet praticable court à travers le terrain et les ponts, en évitant les bâtiments et l’eau. Les amphibies peuvent également traverser l’eau. Si aucun trajet n’existe, choisis un autre départ : aucune énergie n’est dépensée.
+7. Les troupes tirent sur les troupes adverses à portée. Certaines touchent aussi les aériennes. Les alliées ne se blessent pas. **Les troupes ne ciblent, ne détruisent et ne neutralisent jamais les tourelles en PvP. Les tourelles peuvent tirer sur les troupes.**
+8. Une troupe qui atteint le château adverse inflige ses dégâts au château puis disparaît. Le coût, les PV, les dégâts par tir, l’intervalle de tir, la portée et les dégâts au château sont indiqués dans la collection.
 
-1. Télécharge `OWNED_Frontieres_3D_Multijoueur.zip` puis fais **clic droit → Extraire tout**. N’ouvre pas le lanceur directement dans l’archive.
-2. Installe la version **LTS** de [Node.js](https://nodejs.org/fr/download) pour Windows si elle n’est pas déjà installée. Les autres joueurs n’ont pas besoin d’installer Node.js.
-3. Dans le dossier extrait, double-clique sur **OUVRIR_MULTIJOUER.bat**. Le serveur démarre puis ouvre le jeu. Garde sa fenêtre ouverte.
-4. Si le navigateur ne s’ouvre pas automatiquement, tape `http://localhost:8787` dans sa barre d’adresse.
-5. Dans la fenêtre du serveur, repère **« Pour tes amis sur le même réseau »**. L’adresse ressemble à `http://192.168.1.25:8787` : c’est un exemple, utilise celle affichée chez toi.
-6. **Toi et tes amis ouvrez cette adresse réseau**, sur PC ou téléphone connecté au même Wi-Fi. Tu pourras alors copier un lien d’invitation utilisable par tout le groupe.
+Chaque carte a **2,5 secondes de recharge** après un envoi. Tu peux avoir **40 troupes actives** au maximum. Le revenu de base est de **8 énergie par seconde**, auquel s’ajoutent **1,5 par zone achetée** et le revenu de tes forges. L’influence augmente de 1 toutes les vingt secondes. Tu gagnes aussi de l’énergie en éliminant des troupes.
 
-Un lien contenant `localhost` mène à l’appareil de celui qui l’ouvre : il ne faut pas l’envoyer à tes amis. Si Windows demande une autorisation, autorise Node.js sur ton réseau privé. Il n’est pas nécessaire de désactiver le pare-feu.
+La dernière alliance avec un château debout gagne. Une partie dure au maximum quinze minutes : les PV cumulés des châteaux encore debout départagent alors les alliances. Une égalité reste possible. Les niveaux des défenses sont égalisés en PvP ; les statistiques des troupes sont adaptées au siège, distinctes de celles des ennemis de campagne. Les effets de création automatique d’unités et les attaques spéciales contre les défenses ne s’appliquent pas en PvP.
 
-Sur macOS/Linux : dans le dossier extrait, exécute `node server.cjs`, puis ouvre l’adresse affichée. Le script `ouvrir-multijoueur.sh` est également fourni.
+## Obtenir les troupes
 
-### Créer et rejoindre le salon
+Les **87 modèles du PvE** figurent dans la collection de troupes. Six cartes de départ sont offertes : Fantassin, Éclaireur à moto, Jeep armée, Char léger, Hélicoptère d’attaque et Médecin.
 
-1. Ouvre **Combat → Amis & salons**, puis saisis ton pseudo.
-2. Clique **Créer un salon**. Choisis le mode, la carte et la difficulté, puis **Créer un salon amis**.
-3. Transmets le **code à 6 caractères** ou le **lien d’invitation** affiché dans le salon.
-4. Tes amis ouvrent le même serveur, vont dans **Amis & salons**, saisissent le code puis cliquent **Rejoindre**. Le lien préremplit le code ; ils doivent quand même rejoindre.
-5. Chaque joueur clique **Je suis prêt**. Quand toutes les places nécessaires sont remplies, l’hôte clique **Lancer la partie**.
-6. Laisse la fenêtre du serveur **et l’onglet du joueur hôte** ouverts pendant la partie. Pour arrêter le serveur après la partie : `Ctrl+C` dans sa fenêtre.
+Chaque ouverture de pack ajoute **une troupe bonus**, en plus des défenses prévues par ce pack. Toutes les troupes peuvent être obtenues, avec des raretés et des probabilités différentes. Les cartes restent cachées jusqu’à l’ouverture du sceau puis leur révélation. Les doublons de troupes sont conservés comme exemplaires supplémentaires ; ils n’augmentent pas les statistiques de siège.
 
-| Mode | Humains dans le salon | Organisation |
-|---|---:|---|
-| Coopération | 2, 3 ou 4 | Une citadelle et une réserve d’énergie partagées |
-| 1 contre 1 | 2 | Une citadelle par joueur |
-| 2 contre 2 | 4 | Places 1–2 contre places 3–4 |
-| Chacun pour soi | 4 | Quatre citadelles adverses |
+Dans **Troupes · collection**, retire une carte équipée pour libérer un emplacement, puis équipe une autre carte obtenue. La sélection est enregistrée sur cet appareil. Prépare-la avant de créer ou rejoindre un salon.
 
-Le carnet d’amis est enregistré sur chaque appareil. Ajouter un identifiant ne transmet pas d’invitation : partage toi-même le lien ou le code du salon.
+## Changer d’onglet et reprendre une partie
 
-## 2. À distance — chacun chez soi
+**Le serveur fait avancer les parties multijoueurs.** L’hôte n’a plus besoin de garder l’onglet visible. Tant que le serveur fonctionne, les ennemis et les autres joueurs continuent. Une reconnexion à ton compte permet de reprendre ta place et de recevoir l’état actuel de la partie. Quitter volontairement le salon abandonne cette place.
 
-**Le dépôt du HTML seul sur Netlify ne démarre pas le serveur multijoueur fourni.** Pour cette version, héberge le jeu complet sur un service Node.js ; tes amis utiliseront son adresse publique. Le serveur est déjà dans le ZIP. Aucun service public n’a été créé automatiquement.
+Le jeu solo suit le temps écoulé quand l’onglet est masqué. Un téléphone ou un navigateur peut toutefois suspendre complètement une page : au retour, le jeu rattrape le temps écoulé. Fermer le fichier HTML ne lance pas un serveur en arrière-plan.
 
-Une possibilité pour tester est **Render**, qui propose des services web Node.js. Les réglages ci-dessous concernent le projet fourni, sans dépendance externe à installer dans son code.
+Les salons sans aucun joueur connecté sont nettoyés après dix minutes. L’arrêt ou le redémarrage du serveur termine les parties en cours ; les comptes et amis restent conservés si leurs fichiers sont préservés.
 
-1. Extrais le ZIP. Crée un dépôt GitHub, puis ajoute les fichiers du projet en conservant le dossier `dist` et son `index.html`. À la racine du dépôt, il faut notamment `package.json`, `server.cjs` et `dist/`.
-2. Ouvre ton compte Render, clique **New → Web Service**, puis connecte ce dépôt. Choisis bien un service web qui exécute Node.js.
-3. Renseigne les valeurs suivantes :
+## Comptes et sauvegarde
 
-| Réglage Render | Valeur |
+- Le compte conserve ton identifiant, ton pseudo, tes amis et les invitations sur **ce serveur**. La session mémorisée dure jusqu’à trente jours ; tu peux te déconnecter depuis le panneau des amis après avoir quitté ton salon.
+- Les comptes de deux serveurs indépendants sont distincts. Tous les amis doivent utiliser la même adresse.
+- La collection, les crédits, la campagne, les équipements et les réglages restent dans le navigateur de chaque appareil. Ils ne sont pas synchronisés entre appareils par cette version.
+- Le serveur conserve ses comptes dans `data/accounts.json`, ou dans le dossier indiqué par `DATA_DIR`. Sauvegarde ce dossier lorsque tu mets le jeu à jour. Ne le publie pas dans un dépôt de code.
+- Les mots de passe sont enregistrés sous forme de dérivés salés, pas en clair. Ce serveur ne propose pas de récupération par e-mail : conserve tes identifiants.
+
+## Jouer à distance
+
+Pour des amis sur des réseaux différents, héberge **le projet complet** sur un service capable d’exécuter un serveur Node.js durable. Une page statique seule ne suffit pas.
+
+Le point d’entrée est `server.cjs`, la commande de démarrage est `npm start` et le port peut être fourni par la variable `PORT`. Conserve `accounts.cjs`, `simulation.js` et `dist/index.html` à leurs emplacements. Le service doit accepter les connexions HTTP longues utilisées par les notifications et les parties.
+
+Pour conserver les comptes après un redéploiement, utilise un **disque persistant** et définis `DATA_DIR` vers son dossier. Utilise l’adresse HTTPS du service pour les connexions à distance. Partage ensuite cette même adresse à tous tes amis. Aucun hébergement public n’est créé automatiquement avec ces fichiers.
+
+## Confort et commandes
+
+- **⚙ Réglages** : taille du HUD de 80 à 120 %, volume des effets et du jeu, volume de la musique, coupure générale. Ces réglages sont mémorisés sur cet appareil. Le HUD limite son agrandissement si nécessaire pour tenir dans l’écran.
+- **Téléphone** : portrait et paysage sont pris en charge ; glisse pour déplacer la caméra, pince pour zoomer. La minicarte et le bouton Château permettent de se recentrer.
+- **PC** : clique pour poser, glisse pour déplacer la caméra, utilise la molette pour zoomer. Les touches 1–6 sélectionnent les cartes de l’onglet actif ; Échap annule une pose.
+- **PvE** : les trajets de préparation disparaissent au lancement de la vague. Les marqueurs d’entrée restent visibles pour indiquer d’où viennent les ennemis.
+- **Neige** : routes brunes, unités plus sombres et luminosité réduite pour distinguer les éléments.
+
+## Si quelque chose ne fonctionne pas
+
+| Symptôme | À vérifier |
 |---|---|
-| Language / Runtime | Node |
-| Branch | La branche contenant tes fichiers |
-| Root Directory | Vide si `package.json` est à la racine |
-| Build Command | `npm install` |
-| Start Command | `npm start` |
-| Health Check Path | `/api/health` |
-| Instance | Free pour un essai, si proposé à ton compte |
-
-4. Lance **Create Web Service**, puis attends la fin du déploiement. Le programme utilise automatiquement le port fourni par l’hébergeur.
-5. Ouvre l’adresse **HTTPS** attribuée par Render. Tous les joueurs doivent utiliser cette même adresse, puis suivre les étapes « Créer et rejoindre le salon » ci-dessus.
-6. Sur cette version hébergée, tu n’as plus besoin de lancer le fichier `.bat` chez toi. L’onglet du joueur hôte doit toujours rester ouvert : il simule la partie.
-
-Le plan gratuit sert aux essais : mise en veille après 15 minutes sans trafic entrant, redémarrage pouvant prendre environ une minute et quotas d’utilisation. Un redémarrage du serveur supprime les salons en cours ; il faut en créer un nouveau. Vérifie le plan et les conditions affichés au moment de la création. Le serveur fourni est prévu pour des parties privées entre amis, sans classement protégé contre la triche.
-
-## 3. Pendant la partie
-
-- **Territoires :** les 3 zones proches du château sont gratuites au début de chaque partie. Clique **Territoires** ou une zone sur la carte, puis **Acheter la zone**. Le prix en énergie et en influence est affiché avant l’achat. L’achat autorise la construction et augmente le revenu par vague. Les coéquipiers partagent les zones achetées ; les équipes adverses gardent leurs propres territoires.
-- Le socle entier de la défense doit tenir dans des zones disponibles. Les routes, l’eau, les bâtiments et les autres socles restent interdits.
-
-- Chaque équipe défend une carte identique. Les coéquipiers partagent leur énergie et leur citadelle, mais chacun améliore ou vend ses propres défenses.
-- Les vagues se synchronisent automatiquement ; l’hôte peut avancer leur lancement quand tous les fronts sont prêts.
-- En opposition, **Envoyer un assaut** coûte **80 énergie**, envoie 4 fantassins et 1 blindé et se recharge en 18 secondes.
-- Les touches **1–6** sélectionnent les défenses ; **Échap** annule la pose. Glisse le terrain pour déplacer la caméra, utilise la molette ou le pincement pour zoomer.
-- Le petit socle indique la place occupée. Le grand cercle indique la portée : il peut traverser une route même si la défense elle-même doit rester à côté.
-- La mise à jour réduit les socles de 25 % et la marge entre défenses à 10 cm. Les chemins restent élargis de 20 %. Cette version agrandit encore les cartes de 25 % par côté : elles mesurent désormais 75 à 87 mètres de côté.
-
-### Sur téléphone
-
-- Joue en **portrait ou paysage** : tourne simplement le téléphone, le HUD se réorganise sans quitter la partie. Une pose en cours est annulée lors du changement de disposition pour éviter une construction involontaire.
-- Les **six cartes** restent accessibles en bas. Touche une défense, puis le terrain ; la croix de sa fiche annule la pose.
-- Glisse le terrain pour déplacer la vue, pince pour zoomer ou utilise **+ / −**.
-- Le bouton **Carte** agrandit la minicarte : touche un endroit pour le rejoindre. **Château** recentre la caméra.
-- **Plein écran** s’affiche si le navigateur le permet. Le jeu reste utilisable sans cette option.
-- Les fiches de défense et de territoire défilent quand l’écran est bas.
-
-## 4. Si ça bloque
-
-| Problème | À vérifier |
-|---|---|
-| « node n’est pas reconnu » | Installe Node.js LTS, puis ferme et relance le fichier `.bat`. |
-| Le téléphone n’ouvre pas le jeu | Même Wi-Fi, adresse réseau exacte, serveur ouvert. Un réseau invité peut isoler les appareils. |
-| Le code est introuvable | Même adresse de serveur pour tous ; vérifie le code. Le salon disparaît si le serveur redémarre ou si l’hôte le quitte. |
-| « Salon complet » | Le duel accepte 2 joueurs ; les autres salons, jusqu’à 4. |
-| La partie ne démarre pas | Chaque joueur doit être connecté et prêt. Duel : 2 ; 2v2/FFA : 4 ; coop : au moins 2. |
-| « Ce site ne possède pas le serveur » | Tu es sur le HTML seul ou un hébergement statique. Utilise l’adresse du serveur local ou Node.js hébergé. |
-| Le jeu se coupe quand l’hôte part | L’hôte doit garder son onglet ouvert ; en local, garde aussi la fenêtre du serveur. |
-| Un service gratuit met longtemps à s’ouvrir | Attends son redémarrage avant de créer ou rejoindre le salon. |
-
-## Documentation officielle
-
-Consultée pour ce tutoriel :
-
-- [Installer Node.js](https://nodejs.org/fr/download) — choisir LTS.
-- [Render : déployer un service web](https://render.com/docs/web-services).
-- [Render : limites du plan gratuit](https://render.com/docs/free).
-
-Les parties ont été testées localement ; la mise en ligne Render est décrite mais n’a pas été exécutée pour ton compte.
+| « Serveur indisponible » | Le lanceur est-il ouvert et l’adresse est-elle celle du serveur ? |
+| Ton ami ne trouve pas le salon | Même adresse et même réseau pour la méthode Wi-Fi ; ne partage pas `localhost` |
+| Le téléphone ne charge pas le jeu | Réseau Wi-Fi invité isolé, pare-feu du PC ou mauvaise adresse réseau |
+| Impossible de lancer | Toutes les places nécessaires sont remplies, connectées et marquées prêtes |
+| Le bouton Inviter est grisé | Crée un salon qui n’a pas encore démarré |
+| Déploiement refusé | Énergie, recharge, limite de troupes, cible ennemie et point de départ autorisé |
+| Les comptes disparaissent après un redéploiement | Le dossier `DATA_DIR` doit être sur un stockage persistant |
+| Une troupe ne tire pas sur une tourelle | C’est la règle du PvP : seules les troupes adverses sont ciblées |
